@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/games', [App\Http\Controllers\GameController::class, 'gamelist']);
+Route::get('/home',function(){
+    return view('home');
+});
+
+Route::get('/gamemember',function(){
+    return view('gamemember');
 });
