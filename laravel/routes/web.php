@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,7 @@ Route::get('/', function () {
     return view('user.welcome');
 });
 
-Route::get('/games', [App\Http\Controllers\GameController::class, 'gamelist']);
+Route::get('/games', [GameController::class, 'gamelist'])->name('gamelist');
 
 // TODOコントローラー作成後に変更(view確認用)
 Route::get('/home',function(){

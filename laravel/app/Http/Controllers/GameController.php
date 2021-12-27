@@ -23,8 +23,8 @@ class GameController extends Controller
         $date2 = new Carbon('+1 month');
 
         $games = Game::orderBy('datetime','asc')
-                            ->whereBetween('datetime', ['date1','date2'])->get();
+                            ->whereBetween('datetime', [$date1,$date2])->get();
                             
-        return view('game.index',['games'=>$games]);
+        return view('games.index',['games'=>$games]);
     }
 }

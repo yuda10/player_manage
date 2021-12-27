@@ -17,14 +17,13 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+              @foreach($games as $game)
                 <div class="callout callout-danger">
-                  <!-- TODO データベースから試合情報取得して表示-->
-                
-                    <h5>1月11日12:00 コンサドーレ札幌 vs ベガルタ仙台</h5>
-
+                  <h5>{{$game->datetime->format('m月d日H時i分')}} {{$game->home_team_id}} vs {{$game->away_team_id}}</h5>
                 </div>
+              @endforeach
                 <div class="callout callout-info">
-                  <h5>1月11日13:00 鹿島アントラーズ vs 浦和レッズ</h5>
+                  <h5>1月11日13:00 鹿島アントラーズ vs 浦和レズ</h5>
 
                 </div>
                 <div class="callout callout-warning">
