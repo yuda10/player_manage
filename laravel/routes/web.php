@@ -15,14 +15,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user.welcome');
 });
 
 Route::get('/games', [App\Http\Controllers\GameController::class, 'gamelist']);
+
+// TODOコントローラー作成後に変更(view確認用)
 Route::get('/home',function(){
     return view('home');
 });
 
+// TODOコントローラー作成後に変更(view確認用)
 Route::get('/gamemember',function(){
     return view('gamemember');
 });
+
+Route::get('/dashboard', function () {
+    return view('user.dashboard');
+})->middleware(['auth:users'])->name('dashboard');
+
+require __DIR__.'/auth.php';
