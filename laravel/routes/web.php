@@ -22,11 +22,6 @@ Route::get('/', function () {
 Route::get('/games', [GameController::class, 'gamelist'])->name('gamelist');
 
 // TODOコントローラー作成後に変更(view確認用)
-Route::get('/home',function(){
-    return view('home');
-});
-
-// TODOコントローラー作成後に変更(view確認用)
 Route::get('/gamemember',function(){
     return view('gamemember');
 });
