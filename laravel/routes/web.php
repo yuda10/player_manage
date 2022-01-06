@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\GameMemberController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -21,10 +22,7 @@ Route::get('/', function () {
 
 Route::get('/games', [GameController::class, 'gamelist'])->name('gamelist');
 
-// TODOコントローラー作成後に変更(view確認用)
-Route::get('/gamemember',function(){
-    return view('gamemember');
-});
+Route::get('/game_members', [GameMemberController::class, 'player_list'])->name('player_list');
 
 Route::get('/dashboard', function () {
     return view('user.dashboard');

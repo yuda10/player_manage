@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => '選手管理システム',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '選手管理システム',
+    'logo_img' => 'image/members.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => '選手管理システムアイコン',
 
     /*
     |--------------------------------------------------------------------------
@@ -226,18 +226,24 @@ return [
 
     'menu' => [
         // Navbar items:
+        // [
+        //     'type'         => 'navbar-search',
+        //     'text'         => 'search',
+        //     'topnav_right' => true,
+        // ],
         [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
+            'text'         => 'ログアウト',
+            'url'       => 'important / link',
+            'classes'   => 'text-bold text-center ',
             'topnav_right' => true,
         ],
-        [
-            'type'         => 'fullscreen-widget',
-            'topnav_right' => true,
-        ],
+        // [
+        //     'type'         => 'fullscreen-widget',
+        //     'topnav_right' => true,
+        // ],
 
         // Sidebar items:
-        
+
         // [
         //     'type' => 'sidebar-menu-search',
         //     'text' => 'search',

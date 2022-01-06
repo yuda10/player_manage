@@ -24,4 +24,9 @@ class Game extends Model
     ];
 
     protected $dates = ['datetime'];
+
+    public function team()
+    {
+        return $this->hasOne('App\Team','id','home_team_id');
+    }
 }

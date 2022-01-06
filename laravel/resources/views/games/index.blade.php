@@ -1,7 +1,5 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
-
 @section('content_header')
 <h1>試合一覧</h1>
 @stop
@@ -10,7 +8,7 @@
 <div class="card card-default">
               <div class="card-header">
                 <h3 class="card-title">
-                  <i class="fas fa-bullhorn"></i>
+                <i class="fas fa-football-ball"></i>
                   九州Aリーグ
                 </h3>
                 <!-- TODO 試合追加ボタンを追加 -->
