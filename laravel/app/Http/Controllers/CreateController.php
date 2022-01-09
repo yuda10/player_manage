@@ -1,0 +1,131 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Player;
+
+class CreateController extends Controller
+{
+    public function index(){
+
+        return view("create");
+    }
+/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    // public function index()
+    // {
+    //     //memberテーブルからname,telephone,emailを$membersに格納
+    //     // $members=DB::table('members')
+    //     // ->select('id', 'name', 'telephone', 'email')
+    //     // ->get();
+    //     $members = DB::select('select id,name,telephone,email  from members');
+
+    //     //viewを返す(compactでviewに$membersを渡す)
+    //     return view('member/index', compact('members'));
+    // }
+
+    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $player=new Player;
+        
+        $player->team_id=$request->input('team_id');
+        $player->position=$request->input('position');
+        $player->name=$request->input('name');
+        $player->birthday=$request->input('birthday');
+        $player->phone=$request->input('phone');
+        $player->email=$request->input('email');
+
+        $player->save();
+        $player->refresh();
+
+        $profileImage = $request->file('example');
+        // dd($profileImage);
+        if ($profileImage != null) {
+            $image_path = $this->saveProfileImage($profileImage, $player->id); // return file name
+            $player->photo=$image_path;
+
+            $player->save();
+        }
+            //  dd($image_path);
+
+        //一覧表示画面にリダイレクト
+        return redirect('players/'.$request->input('team_id'));
+    }
+    
+    private function saveProfileImage($image, $id) {
+        // get instance
+        $img = \Image::make($image);
+        // resize
+        // $img->fit(100, 100, function($constraint){
+        //     $constraint->upsize(); 
+        // });
+        // save
+        $file_name = 'profile_'.$id.'.'.$image->getClientOriginalExtension();
+        $save_path = 'public/profiles/'.$file_name;
+        \Storage::put($save_path, (string) $img->encode());
+        // return file name
+        return $file_name;
+    }
+
+/**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $player=Player::find($id);
+
+        return view('edit', compact('player'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $player=Player::find($id);
+        // dd($id);
+        // $player->team_id=$request->input('team_id');
+        $player->position=$request->input('position');
+        $player->name=$request->input('name');
+        $player->birthday=$request->input('birthday');
+        $player->phone=$request->input('phone');
+        $player->email=$request->input('email');
+
+
+        //DBに保存
+        $player->save();
+
+        $profileImage = $request->file('example');
+        // dd($profileImage);
+        if ($profileImage != null) {
+            $image_path = $this->saveProfileImage($profileImage, $player->id); // return file name
+            $player->photo=$image_path;
+
+            $player->save();
+        }
+
+        //処理が終わったらmember/indexにリダイレクト
+        return redirect('players/'.$player->team_id);
+    }
+
+   
+}
+
