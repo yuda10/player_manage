@@ -11,23 +11,6 @@ class CreateController extends Controller
 
         return view("create");
     }
-/**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // public function index()
-    // {
-    //     //memberテーブルからname,telephone,emailを$membersに格納
-    //     // $members=DB::table('members')
-    //     // ->select('id', 'name', 'telephone', 'email')
-    //     // ->get();
-    //     $members = DB::select('select id,name,telephone,email  from members');
-
-    //     //viewを返す(compactでviewに$membersを渡す)
-    //     return view('member/index', compact('members'));
-    // }
-
     
     /**
      * Store a newly created resource in storage.
@@ -109,7 +92,6 @@ class CreateController extends Controller
         $player->phone=$request->input('phone');
         $player->email=$request->input('email');
 
-
         //DBに保存
         $player->save();
 
@@ -125,7 +107,5 @@ class CreateController extends Controller
         //処理が終わったらmember/indexにリダイレクト
         return redirect('players/'.$player->team_id);
     }
-
-   
 }
 

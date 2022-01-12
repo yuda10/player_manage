@@ -23,7 +23,14 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/players', function () {
+    return view('players');
+});
+
 Route::get('/teams/', [ App\Http\Controllers\TeamsController::class, 'index' ] ) ;
+Route::get('/teamcreate/', [ App\Http\Controllers\TeamsController::class, 'create' ] )->name('teamcreate');
+Route::post('/teams/', [ App\Http\Controllers\TeamsController::class, 'store'] );
+
 Route::get('/players/{team}', [ App\Http\Controllers\PlayersController::class, 'index' ] ) ;
 Route::post('/player', [ App\Http\Controllers\CreateController::class, 'store'] )->name('player');
 Route::get('/create/', [ App\Http\Controllers\CreateController::class, 'index' ] );

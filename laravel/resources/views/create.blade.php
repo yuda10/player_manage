@@ -11,7 +11,7 @@
 <h1>選手登録</h1>
 
 <!-- <form action="Create"  method="POST" > -->
-<form action="/player" method="POST" enctype="multipart/form-data >
+<form action="/player" method="POST" enctype="multipart/form-data" >
 
   @csrf
 

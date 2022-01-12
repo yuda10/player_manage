@@ -25,18 +25,14 @@
 
 <body>
 
-  <div style="background: #0bd;  font-size: 100%; padding: 20px;">
- 
-  <tr>
-      {{$team->name}}
-    </tr>
-  
+  <div style=" font-size: 100%; padding: 20px;">
+    <tr>{{$team->league}}</tr>
+    <tr>{{$team->name}}</tr>
   </div>
   <a href="{{ url('create') }}"><input type="submit" value="選手登録"></a>
   
-  <table border="1" width="auto">
-    <tr>
-      <!-- <th>状態</th> -->
+  <table border="1" width="auto" ;>
+      <tr>
       <th>ポジション</th>
       <th>ID</th>
       <th>名前</th>
