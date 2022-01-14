@@ -22,9 +22,11 @@
     <input type="email" class="form-control" name="manager_email" placeholder="代表者メールアドレス" maxlength="254" required><br>
         
     <button class="w-100 btn btn-lg" type="submit">保存する</button>
-    <button class="w-100 btn btn-lg" type="submit">キャンセル</button>
+    
 </form>
-
+<!-- <button class="w-100 btn btn-lg" type="submit">キャンセル</button> -->
+    <a href="/teams">{{ __('一覧へ戻る') }}</a>
 </body>
+
 </html>
 

@@ -4,12 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Player;
+use App\Models\Team;
 
 class CreateController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        $team_id=null;
+        $team_name=null;
+        if(!empty($request->session()->get('team_id'))){
+            $team_id=$request->session()->get('team_id');
+            $team_name=Team::find($team_id)->name;
+            
+        }
+        
+        // dd($team_id);
 
-        return view("create");
+        return view('create', compact('team_id','team_name'));
     }
     
     /**

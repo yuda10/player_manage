@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class PlayersController extends Controller
 {
-    public function index($team_id){
+    public function index(Request $request, $team_id){
+        
+        $request->session()->put('team_id', $team_id);
+        // dd($request->session()->get('team_id'));
         $players= DB::table('players')->where('team_id', $team_id)->orderBy('team_id')->get();
         //$teams = DB::("SELECT * FROM teams");
         //$teams = Team::get();
