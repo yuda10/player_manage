@@ -25,8 +25,19 @@ class Game extends Model
 
     protected $dates = ['datetime'];
 
-    public function team()
+    // Team（親）とのリレーション
+    public function homeTeams()
     {
-        return $this->hasOne('App\Team','id','home_team_id');
+        return $this->belongsTo(Team::class, 'home_team_id', 'id');
+    }
+
+    public function awayTeams()
+    {
+        return $this->belongsTo(Team::class, 'away_team_id', 'id');
+    }
+
+    public function assistantTeams()
+    {
+        return $this->belongsTo(Team::class, 'assistant_team_id', 'id');
     }
 }

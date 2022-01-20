@@ -2,10 +2,10 @@
 
 @section('content_header')
 @foreach($games as $game)
-<h1>{{$game -> name}} vs {{$game -> away_team_id}}</h1>
-<h5>{{$game -> ground}}</h5>
-<h5>{{$game->datetime->format('m月d日H時i分')}} K.O</h5>
-<h5>{{$game -> assistant_team_id}}</h5>
+<h1>九州Aリーグ</h1>
+<h1 class="text-center">{{$game -> homeTeams -> name}} vs {{$game -> awayTeams -> name}}</h1>
+<h5 class="text-center">{{$game -> datetime -> format('Y-m-d')}} {{$game -> ground}} {{$game -> datetime -> format('H:i')}}K.O</h5>
+<h6 class="text-center">補助チーム : {{$game -> assistantTeams -> name}}</h6>
 @endforeach
 @stop
 
@@ -77,3 +77,4 @@
   console.log('Hi');
 </script>
 @stop
+

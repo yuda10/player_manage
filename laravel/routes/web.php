@@ -20,9 +20,16 @@ Route::get('/', function () {
     return view('user.welcome');
 });
 
-Route::get('/games', [GameController::class, 'gamelist'])->name('gamelist');
+Route::get('/test', function () {
+    return view('match_informations.index');
+});
 
-Route::get('/game_members', [GameMemberController::class, 'player_list'])->name('player_list');
+Route::get('/games/{league}', [GameController::class, 'gameList'])->name('gameList');
+
+Route::get('/game_members/{game}', [GameMemberController::class, 'playerList'])->name('playerList');
+
+Route::post('/match_register',[GameController::class,'matchRegister'])->name('matchRegister');
+
 
 Route::get('/dashboard', function () {
     return view('user.dashboard');

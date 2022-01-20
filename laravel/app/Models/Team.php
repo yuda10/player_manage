@@ -22,4 +22,19 @@ class Team extends Model
         'manager_email',
     ];
 
+    // Game（子）とのリレーション
+    public function homeTeams()
+    {
+        return $this->hasMany(Game::class, 'id', 'home_team_id');
+    }
+
+    public function awayTeams()
+    {
+        return $this->hasMany(Game::class, 'id', 'away_team_id');
+    }
+
+    public function assistantTeams()
+    {
+        return $this->hasMany(Game::class, 'id', 'assistant_team_id');
+    }
 }

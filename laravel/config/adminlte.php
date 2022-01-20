@@ -1,5 +1,12 @@
 <?php
 
+// $league = [
+//     '九州A'=>'kyusyuA',
+//     '九州B'=>'kyusyuB',
+//     '福岡県A'=>'fukuokaA',
+//     '福岡県B'=>'fukuokaB'
+// ];
+
 return [
 
     /*
@@ -277,19 +284,19 @@ return [
             'submenu' => [
                 [
                     'text' => 'leage_one',
-                    'url'  => '#',
+                    'url'  => "/games/kyusyuA",
                 ],
                 [
                     'text' => 'leage_two',
-                    'url'  => '#',
+                    'url'  => "/games/kyusyuB",
                 ],
                 [
                     'text' => 'leage_three',
-                    'url'  => '#',
+                    'url'  => "/games/fukuokaA",
                 ],
                 [
                     'text' => 'leage_four',
-                    'url'  => '#',
+                    'url'  => "/games/fukuokaB",
                 ],
             ],
         ],

@@ -8,6 +8,8 @@ use App\Models\Game;
 
 use App\Models\Player;
 
+use App\Models\Team;
+
 use App\Models\GameMember;
 
 
@@ -20,10 +22,11 @@ class GameMemberController extends Controller
      * @return Request
      */
 
-    public function player_list(Request $request)
+    public function playerList(Request $request)
     {
-        $games = Game::where('id','1')->get();
-        $players = Player::where('team_id','1')->get();
+        $value = $request->game;
+        $games = Game::with(['homeTeams', 'awayTeams', 'assistantTeams'])->where('id', $value)->get();
+        $players = Player::where('team_id', $value)->get();
                             
         return view('game_members.index',compact('games','players'));
     }

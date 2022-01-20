@@ -1,35 +1,5 @@
-@extends('adminlte::page')
-
-@section('content_header')
-<h1>試合一覧</h1>
-@stop
-
-@section('content')
-<div class="card card-default">
-	<div class="card-header row">
-		<p class="card-title col-md-10 d-flex align-items-center">
-			<i class="fas fa-football-ball"></i>
-			<b>{{$league}}リーグ</b>
-		</p>
-		<button type="button" class="btn btn-outline-secondary btn-sm col-md-2" data-toggle="modal"
-			data-target="#addGameModal">
-			試合追加
-		</button>
-	</div>
-	<!-- モーダルダイアログ -->
-	@include('games.addmodal')
-	<!-- <div class="modal fade" id="addGameModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">試合追加</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				
-				<div class="modal-body">
-					<form method="post" action="/match_register" id="add_form">
+<div class="modal-body">
+					<form method="post" action="/match_register" id="match_form">
 					@csrf
 					<div class="row justify-content-start">
 						<div class="col-8">
@@ -95,57 +65,3 @@
 					</div>
 					</form>
 				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary" form="add_form">追加</button>
-				</div>
-			</div>
-		</div>
-	</div> -->
-	<!-- /.card-header -->
-	<div class="card-body">
-		@foreach($games as $game)
-		<div class="callout callout-warning row">
-			<div class="col-md-11 d-flex">
-			<a href="/game_members/{{$game -> id}}" class="text-decoration-none">
-				<p>{{$game -> datetime -> format('Y-m-d')}} {{$game -> ground}} {{$game -> datetime ->
-					format('H:i')}}K.O</p>
-				<h4>{{$game -> homeTeams -> name}} vs {{$game -> awayTeams -> name}}</h4>
-			</a>
-			</div>
-			<div class="col-md-1 row">
-			<button type="button" class="btn btn-outline-secondary btn-sm col align-self-center " data-toggle="modal"
-			data-target="#editGameModal">
-			修正
-		</button>
-		</div>
-		@include('games.editmodal')
-		</div>
-		@endforeach
-	</div>
-
-
-	<!-- /.card-body -->
-</div>
-@stop
-
-@section('css')
-<link rel=”stylesheet” href=”/css/admin_custom.css”>
-@stop
-
-@section('js')
-<script>
-$(function() {
-  $('input[name="datetime"]').daterangepicker({
-	showDropdowns: true,
-	singleDatePicker: true,
-    timePicker: true,
-	timePicker24Hour: true,
-    locale: {
-      format: 'Y-MM-DD HH:mm'
-    }
-  });
-});
-</script>
-@stop
-
-<!-- {{print_r($teams)}} -->
