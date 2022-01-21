@@ -16,11 +16,4 @@ return [
     'important'                     => '重要',
     'warning'                       => '警告',
     'information'                   => 'インフォメーション',
-    'home'                          => 'ホーム',
-    'teamlist'                      => 'チーム一覧',
-    'gamelist'                      => '試合一覧',
-    'leage_one'                     => '九州Aリーグ',
-    'leage_two'                     => '九州Bリーグ',
-    'leage_three'                   => '福岡県Aリーグ',
-    'leage_four'                    => '福岡県Bリーグ',
 ];

@@ -8,12 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     use HasFactory;
-<<<<<<< HEAD
     public function players()
     {
         return $this->hasMany(App\Models\Player::class);
         // return $this->belongsTo(App\Models\Player::class);
-=======
+    }
 
     // テーブル名
     protected $table = 'teams';
@@ -42,6 +41,5 @@ class Team extends Model
     public function assistantTeams()
     {
         return $this->hasMany(Game::class, 'id', 'assistant_team_id');
->>>>>>> yuda/main
     }
 }

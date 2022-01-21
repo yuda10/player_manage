@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\GameMemberController;
+use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\PlayersController;
+use App\Http\Controllers\CreateController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -41,15 +44,18 @@ Route::get('/players', function () {
     return view('players');
 });
 
-Route::get('/teams/', [ App\Http\Controllers\TeamsController::class, 'index' ] ) ;
-Route::get('/teamcreate/', [ App\Http\Controllers\TeamsController::class, 'create' ] )->name('teamcreate');
-Route::post('/teams/', [ App\Http\Controllers\TeamsController::class, 'store'] );
+Route::get('/teams/', [ TeamsController::class, 'index' ] ) ;
+Route::get('/teamcreate/', [ TeamsController::class, 'create' ] )->name('teamcreate');
+Route::post('/teams/', [ TeamsController::class, 'store'] );
 
-Route::get('/players/{team}', [ App\Http\Controllers\PlayersController::class, 'index' ] ) ;
-Route::post('/player', [ App\Http\Controllers\CreateController::class, 'store'] )->name('player');
-Route::get('/create/', [ App\Http\Controllers\CreateController::class, 'index' ] );
-Route::get('/edit/{id}', [ App\Http\Controllers\CreateController::class, 'edit' ] )->name('player');;
-Route::post('/edit/{id}', [ App\Http\Controllers\CreateController::class, 'update'] )->name('player');
+Route::get('/players/{team}', [ PlayersController::class, 'index' ] ) ;
+Route::post('/player', [ CreateController::class, 'store'] )->name('player');
+Route::get('/create/', [ CreateController::class, 'index' ] );
+Route::get('/edit/{id}', [ CreateController::class, 'edit' ] )->name('player');;
+Route::post('/edit/{id}', [ CreateController::class, 'update'] )->name('player');
+Route::get('/home2', function() {
+    return view('home');
+});
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
