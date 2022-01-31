@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     use HasFactory;
+    public function players()
+    {
+        return $this->hasMany(App\Models\Player::class);
+        // return $this->belongsTo(App\Models\Player::class);
+    }
 
     // テーブル名
     protected $table = 'teams';

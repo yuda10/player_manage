@@ -33138,11 +33138,11 @@ html.maximized-card {
 
 .callout a {
   color: #495057;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .callout a:hover {
-  color: #495057;
+  color: #e9ecef;
 }
 
 .callout p:last-child {
