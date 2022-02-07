@@ -16,23 +16,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('user.welcome');
-});
+// Route::get('/', function () {
+//     return view('user.welcome');
+// });
 
-Route::get('/test', function () {
-    return view('match_informations.index');
-});
+// Route::get('/test', function () {
+//     return view('match_informations.index');
+// });
 
 Route::get('/games/{league}', [GameController::class, 'gameList'])->name('gameList');
 
-Route::get('/game_members/{game}', [GameMemberController::class, 'playerList'])->name('playerList');
+Route::get('/game_members/{game_id}', [GameMemberController::class, 'gameMemberList'])->name('playerList');
 
-Route::post('/match_register',[GameController::class,'matchRegister'])->name('matchRegister');
+Route::post('/match_add',[GameController::class,'matchAdd'])->name('matchAdd');
+
+Route::post('/match_edit',[GameController::class,'matchEdit'])->name('matchEdit');
+
+Route::post('/match_delete',[GameController::class,'matchDelete'])->name('matchDelete');
+
+Route::get('/game_members/img/{member_id}', [GameMemberController::class, 'imgCode'])->name('imgCode');
+
+Route::post('/home_members_add', [GameMemberController::class, 'homeMemberAdd'])->name('homeMemberAdd');
+
+Route::post('/away_members_add', [GameMemberController::class, 'awayMemberAdd'])->name('awayMemberAdd');
+
+Route::get('/test', function () {
+    return view('game_members.test');
+});
 
 
-Route::get('/dashboard', function () {
-    return view('user.dashboard');
-})->middleware(['auth:users'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('user.dashboard');
+// })->middleware(['auth:users'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+// require __DIR__.'/auth.php';

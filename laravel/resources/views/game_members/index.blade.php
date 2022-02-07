@@ -4,63 +4,18 @@
 @foreach($games as $game)
 <h1>九州Aリーグ</h1>
 <h1 class="text-center">{{$game -> homeTeams -> name}} vs {{$game -> awayTeams -> name}}</h1>
-<h5 class="text-center">{{$game -> datetime -> format('Y-m-d')}} {{$game -> ground}} {{$game -> datetime -> format('H:i')}}K.O</h5>
+<h5 class="text-center">{{$game -> datetime -> format('Y-m-d')}} {{$game -> ground}} {{$game -> datetime ->format('H:i')}}K.O</h5>
 <h6 class="text-center">補助チーム : {{$game -> assistantTeams -> name}}</h6>
 @endforeach
 @stop
 
 @section('content')
-<div class="card card-default">
-  <div class="card-header">
-    <h3 class="card-title">コンサドーレ札幌</h3>
 
-    <div class="card-tools">
-      <button type="button" class="btn btn-tool" data-card-widget="collapse">
-        <i class="fas fa-minus"></i>
-      </button>
-      <button type="button" class="btn btn-tool" data-card-widget="remove">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-  </div>
-  <!-- /.card-header -->
-  <div class="card-body">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          @for($i = 1; $i < 16; $i++) <label>No.{{$i}}</label>
-            <!-- TODO アイコン写真 -->
-            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1"
-              tabindex="-1" aria-hidden="true">
-              <option selected disabled hidden style='display: none' value=''></option>
-              @foreach($players as $player)
-              <option>{{$player -> name}}</option>
-              @endforeach
-            </select>
-            @endfor
-        </div>
-      </div>
-      <!-- /.col -->
-      <div class="col-md-6">
-        <div class="form-group">
-          @for($i = 16; $i < 24; $i++) <label>No.{{$i}}</label>
-            <!-- TODO アイコン写真 -->
-            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1"
-              tabindex="-1" aria-hidden="true">
-              <option selected disabled hidden style='display: none' value=''></option>
-              @foreach($players as $player)
-              <option>{{$player -> name}}</option>
-              @endforeach
-            </select>
-            @endfor
-        </div>
-      </div>
-      <!-- /.form-group -->
-    </div>
-    <!-- /.col -->
-  </div>
-  <!-- /.col -->
-</div>
+<!-- TODO if文で分岐 'game_members.game_members' か 'game_members.home_members' か 'game_members.away_members'-->
+@include('game_members.game_members')
+      
+
+
 <!-- /.row -->
 <div class="card-footer">
   Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
@@ -74,7 +29,55 @@
 
 @section('js')
 <script>
-  console.log('Hi');
+  for (let i = 1; i < 24; i++) {
+    const member_select = document.getElementById('member_select' + i);
+    var member_id = member_select.value;
+    if (member_id) {
+      var request = $.ajax({
+        type: 'GET',
+        url: '/game_members/img/' + member_id,
+        // cashe: false, ←コメントアウトで非同期通信
+        dataType: 'json',
+        timeout: 3000
+      });
+      // 成功時
+      request.done(function(data) {
+        $('#member_img' + i).children('img').attr('src', '/image/profile_img/' + data);
+      });
+
+      // 失敗時
+      request.fail(function() {
+        alert("通信に失敗しました");
+      });
+    } else {
+      ;
+    };
+
+  };
+
+  for (let i = 1; i < 24; i++) {
+    const member_select = document.getElementById('member_select' + i);
+    // Ajax通信開始
+    member_select.onchange = function() {
+      var member_id = member_select.value;
+      var request = $.ajax({
+        type: 'GET',
+        url: '/game_members/img/' + member_id,
+        // cashe: false, ←コメントアウトで非同期通信
+        dataType: 'json',
+        timeout: 3000
+      });
+      // 成功時
+      request.done(function(data) {
+        $('#member_img' + i).children('img').attr('src', '/image/profile_img/' + data);
+      });
+
+      // 失敗時
+      request.fail(function() {
+        alert("通信に失敗しました");
+      });
+
+    };
+  };
 </script>
 @stop
-

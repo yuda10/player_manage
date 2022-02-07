@@ -14,8 +14,11 @@ class Player extends Model
     // 可変項目
     protected $fillable = 
     [   
+        'jrfu_id',
         'name',
-        'birthday',
+        'phone',
+        'email',
+        'position',
         'photo',
         'team_id',
     ];
