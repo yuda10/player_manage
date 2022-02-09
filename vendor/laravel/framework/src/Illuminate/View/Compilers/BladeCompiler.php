@@ -309,6 +309,7 @@ class BladeCompiler extends Compiler implements CompilerInterface
     }
 
     /**
+<<<<<<< HEAD:vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php
      * Render a component instance to HTML.
      *
      * @param  \Illuminate\View\Component  $component
@@ -333,6 +334,8 @@ class BladeCompiler extends Compiler implements CompilerInterface
     }
 
     /**
+=======
+>>>>>>> upstream/master:laravel/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php
      * Store the blocks that do not receive compilation.
      *
      * @param  string  $value

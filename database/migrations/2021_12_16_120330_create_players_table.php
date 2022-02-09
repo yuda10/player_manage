@@ -14,14 +14,13 @@ class CreatePlayersTable extends Migration
     public function up()
     {
         Schema::create('players', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('jrfu_id');
-            $table->string('name',32);
-            $table->string('phone',11);
-            $table->string('email',255);
-            $table->string('position',16);
-            $table->string('photo',500)->nullable()->default('NULL');
-            $table->string('team_id',11);
+            $table->id();
+            $table->string('name', 20);
+            $table->string('phone', 20);
+            $table->string('email');
+            $table->string('position', 20);
+            $table->string('photo')->nullable();
+            $table->bigInteger('team_id')->unsigned()->index();
             $table->timestamps();
         });
     }
