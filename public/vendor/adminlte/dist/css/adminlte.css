@@ -5142,7 +5142,6 @@ input[type="button"].btn-block {
   border-bottom: 0 solid rgba(0, 0, 0, 0.125);
 }
 
-
 .card-header:first-child {
   border-radius: calc(0.25rem - 0) calc(0.25rem - 0) 0 0;
 }
@@ -33139,11 +33138,11 @@ html.maximized-card {
 
 .callout a {
   color: #495057;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .callout a:hover {
-  color: #495057;
+  color: #e9ecef;
 }
 
 .callout p:last-child {
