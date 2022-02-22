@@ -12,6 +12,8 @@ use App\Models\Team;
 
 use App\Models\GameMember;
 
+use Carbon\Carbon;
+
 class GameMemberController extends Controller
 {
     /**
@@ -28,8 +30,10 @@ class GameMemberController extends Controller
         $home_players = Player::where('team_id', $games[0]['home_team_id'])->get();
         $away_players = Player::where('team_id', $games[0]['away_team_id'])->get();
         $game_members = GameMember::where('game_id', $value)->get();
-         
-        return view('game_members.index', compact('games', 'home_players', 'away_players', 'game_members'));
+        $date = new Carbon($games[0]["datetime"]->format('Y-m-d H:i'));
+        $date1 = new Carbon('now');
+
+        return view('game_members.index', compact('games', 'home_players', 'away_players', 'game_members', 'date','date1'));
     }
 
     /**

@@ -12,8 +12,11 @@
 @section('content')
 
 <!-- TODO if文で分岐 'game_members.game_members' か 'game_members.home_members' か 'game_members.away_members'-->
+@if($date->gte($date1->addHour()))
+@include('game_members.home_members')
+@else
 @include('game_members.game_members')
-      
+@endif
 
 
 <!-- /.row -->
@@ -52,7 +55,6 @@
     } else {
       ;
     };
-
   };
 
   for (let i = 1; i < 24; i++) {

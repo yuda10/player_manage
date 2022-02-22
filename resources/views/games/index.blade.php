@@ -27,8 +27,12 @@
 		@foreach($games as $game)
 		<div class="callout callout-warning row">
 			<div class="col-md-10 d-flex">
-				<!-- TODO if文でログイン者のteam_idとhome_team_id,away_team_id,それ以外の分岐？ -->
+				<!-- TODO ログイン者がホーム・アウェイ・管理者は遷移（1時間前より以前） -->
 				<a href="/game_members/{{$game -> id}}" class="text-decoration-none">
+				<!-- TODO ログイン者がそれ以外（1時間前より以前）-->
+				<!-- <a href="#" onclick="alert('両チーム以外の方は試合開始の1時間前から確認できます');return false;" class="text-decoration-none"> -->
+				<!-- それ以外（1時間前以降） -->
+
 					<p>{{$game -> datetime -> format('Y-m-d')}}<span class="ml-1">{{$game -> datetime
 							->format('H:i')}}K.O</span><span class="ml-1">{{$game -> ground}}</span></p>
 					<div class="d-flex flex-row">
