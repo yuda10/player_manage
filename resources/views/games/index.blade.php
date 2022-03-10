@@ -1,10 +1,8 @@
 @extends('adminlte::page')
 
-
 @section('content_header')
 <h1>試合一覧</h1>
 @stop
-
 
 @section('content')
 <!-- リーグ別カード -->
@@ -57,12 +55,9 @@
 	</div>
 </div>
 @stop
-
-
 @section('css')
 <link rel=”stylesheet” href=”/css/admin_custom.css”>
 @stop
-
 
 @section('js')
 <script>

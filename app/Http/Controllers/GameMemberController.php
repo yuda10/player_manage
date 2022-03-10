@@ -14,6 +14,7 @@ use App\Models\GameMember;
 
 use Carbon\Carbon;
 
+
 class GameMemberController extends Controller
 {
     /**
@@ -111,5 +112,6 @@ class GameMemberController extends Controller
         }
 
         return redirect("/game_members/$request->game_id");
+
     }
 }

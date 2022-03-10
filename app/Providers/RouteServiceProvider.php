@@ -17,6 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
+
     public const HOME = '/home';
     public const ADMIN_HOME ='/admin/dashboard';
 
@@ -27,6 +28,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string|null
      */
+
     protected $namespace = 'App\Http\Controllers';
 
     /**

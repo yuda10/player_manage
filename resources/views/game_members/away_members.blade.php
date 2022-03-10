@@ -25,6 +25,7 @@
                   data-select2-id="1" tabindex="-1" aria-hidden="true" id="member_select{{$i}}" name="away_{{$i}}">
 
                     <option selected disabled hidden style='display: none' value=''></option>
+<<<<<<< HEAD
                     @if(!$game_members->isEmpty())
                       @foreach($away_players as $player)
                       @if ($game_members[0]["away_" . $i] == $player->id)
@@ -38,6 +39,15 @@
                       <option value="{{$player->id}}">{{$player -> name}}</option>
                       @endforeach
                     @endif
+=======
+                    @foreach($away_players as $player)
+                    @if ($game_members[0]["away_" . $i] == $player->id)
+                    <option value="{{$player->id}}" selected>{{$player -> name}}</option>
+                    @else
+                    <option value="{{$player->id}}">{{$player -> name}}</option>
+                    @endif
+                    @endforeach
+>>>>>>> ho-chi-upstream/main
                   </select>
                 </div>
               </div>

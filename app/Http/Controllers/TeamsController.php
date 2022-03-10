@@ -18,7 +18,6 @@ class TeamsController extends Controller
         $teams3 = Team::where('league', '福岡県A')->get();
         $teams4 = Team::where('league', '福岡県B')->get();
         
-         
         $view = view('teams',[ 'teams1' => $teams1, 'teams2' => $teams2,'teams3' => $teams3,'teams4' => $teams4,]);
         
         return $view;

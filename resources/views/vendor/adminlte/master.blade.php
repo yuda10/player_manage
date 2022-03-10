@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     {{-- Custom Meta Tags --}}
     @yield('meta_tags')
 
@@ -18,32 +17,30 @@
         @yield('title', config('adminlte.title', 'AdminLTE 3'))
         @yield('title_postfix', config('adminlte.title_postfix', ''))
     </title>
-
     {{-- Custom stylesheets (pre AdminLTE) --}}
     @yield('adminlte_css_pre')
 
     {{-- Base Stylesheets --}}
     @if(!config('adminlte.enabled_laravel_mix'))
-    <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 
-    {{-- Configured Stylesheets --}}
-    @include('adminlte::plugins', ['type' => 'css'])
+        {{-- Configured Stylesheets --}}
+        @include('adminlte::plugins', ['type' => 'css'])
 
-    <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     @else
-    <link rel="stylesheet" href="{{ mix(config('adminlte.laravel_mix_css_path', 'css/app.css')) }}">
+        <link rel="stylesheet" href="{{ mix(config('adminlte.laravel_mix_css_path', 'css/app.css')) }}">
     @endif
 
     {{-- Livewire Styles --}}
     @if(config('adminlte.livewire'))
-    @if(app()->version() >= 7)
-    @livewireStyles
-    @else
-    <livewire:styles />
-    @endif
+        @if(app()->version() >= 7)
+            @livewireStyles
+        @else
+            <livewire:styles />
+        @endif
     @endif
 
     {{-- Custom Stylesheets (post AdminLTE) --}}
@@ -100,11 +97,11 @@
 
     {{-- Livewire Script --}}
     @if(config('adminlte.livewire'))
-    @if(app()->version() >= 7)
-    @livewireScripts
-    @else
-    <livewire:scripts />
-    @endif
+        @if(app()->version() >= 7)
+            @livewireScripts
+        @else
+            <livewire:scripts />
+        @endif
     @endif
 
     {{-- Custom Scripts --}}

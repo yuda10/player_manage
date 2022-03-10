@@ -7,7 +7,6 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-
 				<div class="modal-body">
 					<form method="post" action="/match_delete" id="delete_form">
 					@csrf

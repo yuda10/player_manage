@@ -1,12 +1,5 @@
 <?php
 
-// $league = [
-//     '九州A'=>'kyusyuA',
-//     '九州B'=>'kyusyuB',
-//     '福岡県A'=>'fukuokaA',
-//     '福岡県B'=>'fukuokaB'
-// ];
-
 return [
 
     /*
@@ -250,7 +243,6 @@ return [
         // ],
 
         // Sidebar items:
-
         // [
         //     'type' => 'sidebar-menu-search',
         //     'text' => 'search',
@@ -270,7 +262,7 @@ return [
         // ['header' => 'account_settings'],
         [
             'text' => 'home',
-            'url'  => 'admin/settings',
+            'url'  => 'notice',//ホームのリンク先
             'icon' => 'fas fa-fw fa-user',
         ],
         [

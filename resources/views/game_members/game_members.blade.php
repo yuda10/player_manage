@@ -46,7 +46,6 @@
               </div>
               </a>
               @endfor
-            
           </div>
         </div>
         <!-- /.col -->
@@ -91,12 +90,9 @@
           </div>
         </div>
       </div>
-      
-
   @else
   <p>まだ登録されていません</p>
   @endif
   </div>
   <!-- /.col -->
- 
 </div>

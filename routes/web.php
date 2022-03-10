@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,6 +64,10 @@ Route::get('/players', function () {
     return view('players');
 });
 
+Route::get('notice', function () {
+    return view('notice');
+});
+
 Route::get('/teams', [ TeamsController::class, 'index' ] ) ;
 Route::get('/teamcreate', [ TeamsController::class, 'create' ] )->name('teamcreate');
 Route::post('/teams', [ TeamsController::class, 'store'] );
@@ -72,11 +77,17 @@ Route::post('/player', [ CreateController::class, 'store'] )->name('player');
 Route::get('/create', [ CreateController::class, 'index' ] );
 Route::get('/edit/{id}', [ CreateController::class, 'edit' ] )->name('player');;
 Route::post('/edit/{id}', [ CreateController::class, 'update'] )->name('player');
+Route::get('/edit/profile_delete/{id}', [ CreateController::class, 'profile_delete'] )->name('player');
+// Route::get('/foo', [ CreateController::class, 'notice']);
+
+// Route::get('/teams/', [ TeamsController::class, 'index' ] ) ;
+
 Route::get('/home2', function() {
     return view('home');
 });
 
 Auth::routes();
+
 Route::get('/home', [ HomeController::class, 'index'])->name('home');
 
 Route::post('/test', function () {

@@ -36,7 +36,11 @@
 
                 <li class="nav-item">
 
+<<<<<<< HEAD
                     <a class="nav-link  " href="http://127.0.0.1:8000/admin/settings">
+=======
+                    <a class="nav-link  " href="http://127.0.0.1:8000/teams">
+>>>>>>> ho-chi-upstream/main
 
                         <i class="fas fa-fw fa-lock "></i>
                         <ion-icon name="american-football-outline"></ion-icon>

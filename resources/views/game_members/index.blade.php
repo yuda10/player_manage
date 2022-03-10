@@ -4,7 +4,7 @@
 @foreach($games as $game)
 <h1>九州Aリーグ</h1>
 <h1 class="text-center">{{$game -> homeTeams -> name}} vs {{$game -> awayTeams -> name}}</h1>
-<h5 class="text-center">{{$game -> datetime -> format('Y-m-d')}} {{$game -> ground}} {{$game -> datetime ->format('H:i')}}K.O</h5>
+<h5 class="text-center">{{$game -> datetime -> format('Y-m-d')}} {{$game -> ground}} {{$game -> datetime -> format('H:i')}}K.O</h5>
 <h6 class="text-center">補助チーム : {{$game -> assistantTeams -> name}}</h6>
 @endforeach
 @stop
@@ -25,8 +25,6 @@
 @else
 @include('game_members.game_members')
 @endif
-
-
 <!-- /.row -->
 <div class="card-footer">
   Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
@@ -91,3 +89,4 @@
   };
 </script>
 @stop
+

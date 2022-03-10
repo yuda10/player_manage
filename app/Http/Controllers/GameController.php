@@ -39,6 +39,7 @@ class GameController extends Controller
         $teams = Team::where('league', $league)->get();
 
         return view('games.index', compact('league', 'games', 'teams'));
+
     }
 
     /**
@@ -146,4 +147,5 @@ class GameController extends Controller
 
         return redirect("/games/$league");
     }
+
 }

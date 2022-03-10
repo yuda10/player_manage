@@ -71,7 +71,7 @@ class CreateController extends Controller
         return $file_name;
     }
 
-/**
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -80,7 +80,7 @@ class CreateController extends Controller
     public function edit($id)
     {
         $player=Player::find($id);
-
+        // dd($player);
         return view('edit', compact('player'));
     }
 
@@ -93,17 +93,20 @@ class CreateController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request);
         $player=Player::find($id);
         // dd($id);
-        // $player->team_id=$request->input('team_id');
-        $player->position=$request->input('position');
-        $player->name=$request->input('name');
-        $player->birthday=$request->input('birthday');
-        $player->phone=$request->input('phone');
-        $player->email=$request->input('email');
+        $player->team_id=$request->team_id;
+        $player->position=$request->position;
+        $player->name=$request->name;
+        $player->birthday=$request->birthday;
+        $player->phone=$request->phone;
+        // $player->photo=$request->photo;
+        $player->email=$request->email;
 
         //DBに保存
         $player->save();
+        // dd($request);
 
         $profileImage = $request->file('example');
         // dd($profileImage);
@@ -117,5 +120,13 @@ class CreateController extends Controller
         //処理が終わったらmember/indexにリダイレクト
         return redirect('players/'.$player->team_id);
     }
+
+    public function profile_delete($id){
+        $player=Player::find($id);
+        $player->photo=null;
+        $player->save();
+        return view('edit', compact('player'));
+    }
+
 }
 
