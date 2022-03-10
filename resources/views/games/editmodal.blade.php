@@ -9,7 +9,7 @@
 				</div>
 				
 				<div class="modal-body">
-					<form method="post" action="/match_edit" id="edit_form">
+					<form method="post" action="/match_edit" id="match_edit_form{{$game->id}}">
 					@csrf
 					<div class="row justify-content-start">
 						<div class="col-8">
@@ -26,9 +26,11 @@
 							</div>
 						</div>
 					</div>
+
 					<div class="row justify-content-center">
 						<div class="col-1 text-center">VS</div>
 					</div>
+
 					<div class="row justify-content-end">
 						<div class="col-8">
 							<div class="form-group text-right">
@@ -44,6 +46,7 @@
 							</div>
 						</div>
 					</div>
+
 					<div class="row justify-content-start">
 						<div class="col-10">
 							<div class="form-group mb-3">
@@ -59,12 +62,14 @@
 							</div>
 						</div>
 					</div>
+
 					<div class="row justify-content-start">
 						<div class="form-group col-10">
 							<label>場所:</label>
 							<input type="text" class="form-control" name="ground" value='{{$game -> ground}}'>
 						</div>
 					</div>
+
 					<div class="row justify-content-start">
 						<div class="form-group col-10">
 							<label>日時:</label>
@@ -73,14 +78,16 @@
 							</div>
 						</div>
 					</div>
+
 					<div hidden class="form-group">
 						<textarea name="league">{{$league}}</textarea>
 						<textarea name="id">{{$game->id}}</textarea>
 					</div>
 					</form>
 				</div>
+
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-outline-secondary" form="edit_form">編集</button>
+					<button type="submit" class="btn btn-outline-secondary" form="match_edit_form{{$game->id}}">編集</button>
 				</div>
 			</div>
 		</div>

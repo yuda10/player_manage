@@ -9,6 +9,7 @@
   </div>
   
   <div class="card-body">
+  @if(!$game_members->isEmpty())
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -17,7 +18,7 @@
             <a style="cursor: pointer;" data-toggle="modal" data-target="#home-img-modal{{$i}}">
               <div class="row d-flex align-items-center">
                 <div class="col-md-2">
-                  @if($game_members[0]["home_" . $i])
+                @if($game_members[0]["home_" . $i])
                     @foreach($home_players as $player)
                     @if($game_members[0]["home_" . $i] == $player->id)
                     <img src="/image/profile_img/{{$player->photo}}" class="rounded-circle img-fluid border border-light" style="aspect-ratio: 1/1" alt="写真">
@@ -45,7 +46,7 @@
               </div>
               </a>
               @endfor
-
+            
           </div>
         </div>
         <!-- /.col -->
@@ -90,9 +91,12 @@
           </div>
         </div>
       </div>
+      
 
-    <!-- /.form-group -->
+  @else
+  <p>まだ登録されていません</p>
+  @endif
   </div>
   <!-- /.col -->
-  
+ 
 </div>

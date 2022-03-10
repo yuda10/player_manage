@@ -25,13 +25,19 @@
                   data-select2-id="1" tabindex="-1" aria-hidden="true" id="member_select{{$i}}" name="home_{{$i}}">
 
                     <option selected disabled hidden style='display: none' value=''></option>
-                    @foreach($home_players as $player)
-                    @if ($game_members[0]["home_" . $i] == $player->id)
-                    <option value="{{$player->id}}" selected>{{$player -> name}}</option>
+                    @if(!$game_members->isEmpty())
+                      @foreach($home_players as $player)
+                      @if ($game_members[0]["home_" . $i] == $player->id)
+                      <option value="{{$player->id}}" selected>{{$player -> name}}</option>
+                      @else
+                      <option value="{{$player->id}}">{{$player -> name}}</option>
+                      @endif
+                      @endforeach
                     @else
-                    <option value="{{$player->id}}">{{$player -> name}}</option>
+                      @foreach($home_players as $player)
+                      <option value="{{$player->id}}">{{$player -> name}}</option>
+                      @endforeach
                     @endif
-                    @endforeach
                   </select>
                 </div>
               </div>
@@ -53,13 +59,19 @@
                     data-select2-id="1" tabindex="-1" aria-hidden="true" id="member_select{{$i}}" name="home_{{$i}}">
 
                     <option selected disabled hidden style='display: none' value=''></option>
-                    @foreach($home_players as $player)
-                    @if ($game_members[0]["home_" . $i] == $player->id)
-                    <option value="{{$player->id}}" selected>{{$player -> name}}</option>
+                    @if(!$game_members->isEmpty())
+                      @foreach($home_players as $player)
+                      @if ($game_members[0]["home_" . $i] == $player->id)
+                      <option value="{{$player->id}}" selected>{{$player -> name}}</option>
+                      @else
+                      <option value="{{$player->id}}">{{$player -> name}}</option>
+                      @endif
+                      @endforeach
                     @else
-                    <option value="{{$player->id}}">{{$player -> name}}</option>
+                      @foreach($home_players as $player)
+                      <option value="{{$player->id}}">{{$player -> name}}</option>
+                      @endforeach
                     @endif
-                    @endforeach
                   </select>
                 </div>
               </div>

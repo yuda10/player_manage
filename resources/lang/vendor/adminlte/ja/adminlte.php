@@ -4,6 +4,7 @@ return [
 
     'full_name'                   => '氏名',
     'email'                       => 'メールアドレス',
+    'team_id'                     => '所属チーム',
     'password'                    => 'パスワード',
     'retype_password'             => 'もう一度入力',
     'remember_me'                 => 'パスワードを記憶する',
@@ -14,7 +15,7 @@ return [
     'sign_in'                     => 'ログイン',
     'log_out'                     => 'ログアウト',
     'toggle_navigation'           => 'ナビゲーションを開閉',
-    'login_message'               => 'ログインしてセッションを開始する',
+    'login_message'               => 'ログインしてください',
     'register_message'            => 'アカウントを登録する',
     'password_reset_message'      => 'パスワードをリセットする',
     'reset_password'              => 'パスワードをリセットする',

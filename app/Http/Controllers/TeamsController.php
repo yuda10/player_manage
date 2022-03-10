@@ -13,10 +13,10 @@ class TeamsController extends Controller
 
     public function index(){
         
-        $teams1 = Team::where('league', '九州Aリーグ')->get();
-        $teams2 = Team::where('league', '九州Bリーグ')->get();
-        $teams3 = Team::where('league', '福岡Aリーグ')->get();
-        $teams4 = Team::where('league', '福岡Bリーグ')->get();
+        $teams1 = Team::where('league', '九州A')->get();
+        $teams2 = Team::where('league', '九州B')->get();
+        $teams3 = Team::where('league', '福岡県A')->get();
+        $teams4 = Team::where('league', '福岡県B')->get();
         
          
         $view = view('teams',[ 'teams1' => $teams1, 'teams2' => $teams2,'teams3' => $teams3,'teams4' => $teams4,]);
@@ -32,23 +32,27 @@ class TeamsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request $request
+     * @return Request
      */
     public function store(Request $request)
     {
-        
-        $team=new Team;
-        
-        // $team->id=$request->input('id');
-        $team->name=$request->input('name');
-        $team->league=$request->input('league');
-        $team->manager_name=$request->input('manager_name');
-        $team->manager_phone=$request->input('manager_phone');
-        $team->manager_email=$request->input('manager_email');
+        $this->validate($request, [
+            'name' => 'required|max:11',
+            'league' => 'required|max:11',
+            'manager_name' => 'required|max:11',
+            'manager_phone' => 'required|max:32',
+            'manager_email' => 'required|max:255'
+        ]);
 
-        $team->save();
-        // return view('teams');
-        return redirect('teams/');
+        Team::create([
+            'name'=> $request->name,
+            'league'=> $request->league,
+            'manager_name'=> $request->manager_name,
+            'manager_phone'=> $request->manager_phone,
+            'manager_email'=> $request->manager_email,
+        ]);
+        
+        return redirect('/teams');
     }
 }

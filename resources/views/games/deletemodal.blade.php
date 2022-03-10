@@ -7,7 +7,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				
+
 				<div class="modal-body">
 					<form method="post" action="/match_delete" id="delete_form">
 					@csrf
@@ -15,14 +15,9 @@
 						<textarea name="league">{{$league}}</textarea>
 						<textarea name="id">{{$game->id}}</textarea>
 					</div>
-		
-					<p>{{$game -> datetime -> format('Y-m-d')}}<span class="ml-1">{{$game -> datetime
-							->format('H:i')}}K.O</span><span class="ml-1">{{$game -> ground}}</span></p>
-					<h4>
-						{{$game -> homeTeams -> name}} vs {{$game -> awayTeams
-							-> name}}</h4>
-						<p>補助:{{$game -> assistantTeams -> name}}
-						</p>
+					<p>{{$game -> datetime -> format('Y-m-d')}}<span class="ml-1">{{$game -> datetime->format('H:i')}}K.O</span><span class="ml-1">{{$game -> ground}}</span></p>
+					<h4>{{$game -> homeTeams -> name}} vs {{$game -> awayTeams-> name}}</h4>
+						<p>補助:{{$game -> assistantTeams -> name}}</p>
 					</form>
 				</div>
 				<div class="modal-footer">

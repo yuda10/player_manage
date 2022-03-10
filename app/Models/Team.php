@@ -42,4 +42,10 @@ class Team extends Model
     {
         return $this->hasMany(Game::class, 'id', 'assistant_team_id');
     }
+
+    // User（子）とのリレーション
+    public function userTeams()
+    {
+        return $this->hasMany(User::class);
+    }
 }

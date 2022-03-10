@@ -13,7 +13,15 @@
 
 <!-- TODO if文で分岐 'game_members.game_members' か 'game_members.home_members' か 'game_members.away_members'-->
 @if($date->gte($date1->addHour()))
-@include('game_members.home_members')
+  @if(Auth::user()->team_id == $games[0]['homeTeams']['id'])
+    @include('game_members.home_members')
+  @elseif(Auth::user()->team_id == $games[0]['awayTeams']['id'])
+    @include('game_members.away_members')
+  @elseif(Auth::user()->admin_grade)
+    @include('game_members.game_members')
+  @else
+    @include('game_members.restrictive')
+  @endif
 @else
 @include('game_members.game_members')
 @endif

@@ -238,12 +238,12 @@ return [
         //     'text'         => 'search',
         //     'topnav_right' => true,
         // ],
-        [
-            'text'         => 'ログアウト',
-            'url'       => 'important / link',
-            'classes'   => 'text-bold text-center ',
-            'topnav_right' => true,
-        ],
+        // [
+        //     'text'         => 'ログアウト',
+        //     'logout_url'       => 'logout',
+        //     'classes'   => 'text-bold text-center ',
+        //     'topnav_right' => true,
+        // ],
         // [
         //     'type'         => 'fullscreen-widget',
         //     'topnav_right' => true,
@@ -275,7 +275,7 @@ return [
         ],
         [
             'text' => 'teamlist',
-            'url'  => 'admin/settings',
+            'url'  => '/teams',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [

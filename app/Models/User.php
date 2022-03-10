@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'team_id',
+        'admin_grade'
     ];
 
     /**
@@ -41,4 +43,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Team（親）とのリレーション
+    public function userTeam()
+    {
+        return $this->belongsTo(Team::class, 'team_id', 'id');
+    }
+
 }

@@ -2,9 +2,14 @@
 
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\GameMemberController;
+use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\PlayersController;
+use App\Http\Controllers\CreateController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,13 +21,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('user.welcome');
-// });
+Route::get('/', function () {
+    return view('user.welcome');
+});
 
-// Route::get('/test', function () {
-//     return view('match_informations.index');
-// });
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/games/{league}', [GameController::class, 'gameList'])->name('gameList');
 
@@ -40,13 +47,62 @@ Route::post('/home_members_add', [GameMemberController::class, 'homeMemberAdd'])
 
 Route::post('/away_members_add', [GameMemberController::class, 'awayMemberAdd'])->name('awayMemberAdd');
 
-Route::get('/test', function () {
-    return view('game_members.test');
+Route::get('/system_admin', [UserController::class, 'userList']);
+
+Route::post('/system_admin/user_edit',[UserController::class,'userEdit'])->name('userEdit');
+
+Route::post('/system_admin/notification', [UserController::class, 'notificationEdit'])->name('notive');
+
+Route::get('/dashboard', function () {
+    return view('user.dashboard');
+})->middleware(['auth:users'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+Route::get('/players', function () {
+    return view('players');
+});
+
+Route::get('/teams', [ TeamsController::class, 'index' ] ) ;
+Route::get('/teamcreate', [ TeamsController::class, 'create' ] )->name('teamcreate');
+Route::post('/teams', [ TeamsController::class, 'store'] );
+
+Route::get('/players/{team}', [ PlayersController::class, 'index' ] ) ;
+Route::post('/player', [ CreateController::class, 'store'] )->name('player');
+Route::get('/create', [ CreateController::class, 'index' ] );
+Route::get('/edit/{id}', [ CreateController::class, 'edit' ] )->name('player');;
+Route::post('/edit/{id}', [ CreateController::class, 'update'] )->name('player');
+Route::get('/home2', function() {
+    return view('home');
+});
+
+Auth::routes();
+Route::get('/home', [ HomeController::class, 'index'])->name('home');
+
+Route::post('/test', function () {
+    return view('users.test');
 });
 
 
-// Route::get('/dashboard', function () {
-//     return view('user.dashboard');
-// })->middleware(['auth:users'])->name('dashboard');
+// // 全ユーザ
+// Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
+// // ユーザ一覧
+// Route::get('/account', 'AccountController@index')->name('account.index');
+// });
+// // 管理者以上
+// Route::group(['middleware' => ['auth', 'can:admin-higher']], function () {
+// // ユーザ登録
+// Route::get('/account/regist', 'AccountController@regist')->name('account.regist');
+// Route::post('/account/regist', 'AccountController@createData')->name('account.regist');
+// // ユーザ編集
+// Route::get('/account/edit/{user_id}', 'AccountController@edit')->name('account.edit');
+// Route::post('/account/edit/{user_id}', 'AccountController@updateData')->name('account.edit');
+// // ユーザ削除
+// Route::post('/account/delete/{user_id}', 'AccountController@deleteData');
+// });
+// // システム管理者のみ
+// Route::group(['middleware' => ['auth', 'can:system-only']], function () {
+// });
+Auth::routes();
 
-// require __DIR__.'/auth.php';
+

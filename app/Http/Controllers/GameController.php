@@ -99,7 +99,7 @@ class GameController extends Controller
             'league' => 'required'
         ]);
 
-        Game::where('id', $request['id'])->update([
+        Game::where('id', $request -> id)->update([
             'home_team_id'=> $request->home_team_id,
             'away_team_id'=> $request->away_team_id,
             'assistant_team_id'=> $request->assistant_team_id,
