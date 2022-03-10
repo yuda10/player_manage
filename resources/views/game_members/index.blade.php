@@ -13,17 +13,22 @@
 
 <!-- TODO if文で分岐 'game_members.game_members' か 'game_members.home_members' か 'game_members.away_members'-->
 @if($date->gte($date1->addHour()))
-  @if(Auth::user()->team_id == $games[0]['homeTeams']['id'])
-    @include('game_members.home_members')
-  @elseif(Auth::user()->team_id == $games[0]['awayTeams']['id'])
-    @include('game_members.away_members')
-  @elseif(Auth::user()->admin_grade)
-    @include('game_members.game_members')
-  @else
+  @auth
+    @if(Auth::user()->team_id == $games[0]['homeTeams']['id'])
+      @include('game_members.home_members')
+    @elseif(Auth::user()->team_id == $games[0]['awayTeams']['id'])
+      @include('game_members.away_members')
+    @elseif(Auth::user()->admin_grade)
+      @include('game_members.game_members')
+    @else
+      @include('game_members.restrictive')
+    @endif
+  @endauth
+  @guest
     @include('game_members.restrictive')
-  @endif
+  @endguest
 @else
-@include('game_members.game_members')
+  @include('game_members.game_members')
 @endif
 <!-- /.row -->
 <div class="card-footer">

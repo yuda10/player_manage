@@ -8,21 +8,21 @@
     
 <!-- <a href="{{ url('teamcreate') }}" class="btn btn-primary">ログイン</a> -->
     
-<div class="card card-row card-secondary">
+<div class="card card-row card-secondary mt-3">
 
-<div class="card-header">
+<div class="card-header pr-4 mr-2">
  
-<h3 class="card-title">
-<i class="fas fa-football-ball"></i> 
-お知らせ　ババーン　
-</h3>
+<h3 class="card-title"><i class="fas fa-football-ball"></i> お知らせ</h3>
 </div>
 <div class="card-body">
-
-
+@if(!\App\Models\Notification::count())
+<p>お知らせはありません</p>
+@else
 <div class="card card-light card-outline">
 <div class="card-header">
-<h5 class="card-title">3月9日</h5>
+@foreach($notifications as $notification)
+<h5 class="card-title">{{$notification -> modified_date -> format('Y-m-d')}}</h5>
+@endforeach
 <div class="card-tools">
 <a href="#" class="btn btn-tool">
 <i class="fas fa-pen"></i>
@@ -30,11 +30,12 @@
 </div>
 </div>
 <div class="card-body">
-<p>
-ロシアが欧州最大の原子力発電所を攻撃！
-</p>
+@foreach($notifications as $notification)
+<p>{{$notification -> body}}</p>
+@endforeach
 </div>
 </div>
+@endif
 </div>
 </div>
 

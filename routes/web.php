@@ -7,6 +7,7 @@ use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\CreateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -64,9 +65,7 @@ Route::get('/players', function () {
     return view('players');
 });
 
-Route::get('notice', function () {
-    return view('notice');
-});
+Route::get('/', [NotificationController::class, 'notificationList']);
 
 Route::get('/teams', [ TeamsController::class, 'index' ] ) ;
 Route::get('/teamcreate', [ TeamsController::class, 'create' ] )->name('teamcreate');
@@ -86,12 +85,10 @@ Route::get('/home2', function() {
     return view('home');
 });
 
-Auth::routes();
-
 Route::get('/home', [ HomeController::class, 'index'])->name('home');
 
-Route::post('/test', function () {
-    return view('users.test');
+Route::get('/test', function () {
+    return view('games.test');
 });
 
 

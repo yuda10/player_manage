@@ -31,13 +31,6 @@ class AuthServiceProvider extends ServiceProvider
         });
         // 管理者以上（管理者＆システム管理者）に許可
         Gate::define('admin-higher', function ($user) {
-<<<<<<< HEAD
-=======
-            return ($user->role > 0 && $user->role <= 3);
-        });
-        // チーム代表者以上（代表者＆管理者＆システム管理者）に許可
-        Gate::define('manager-higher', function ($user) {
->>>>>>> ho-chi-upstream/main
             return ($user->role > 0 && $user->role <= 5);
         });
         // 一般ユーザ以上（つまり全権限）に許可
