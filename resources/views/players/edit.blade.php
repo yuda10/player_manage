@@ -61,7 +61,7 @@
   const img_name = document.getElementById('img_name');
   var img = document.getElementById('img');
   imgdel.onclick = function(){
-    img.src = "{{asset('storage/noimage.jpeg')}}";
+    img.src = "{{ asset('storage/noimage.jpeg')}}";
     img_name.value = "";
 };
 </script>

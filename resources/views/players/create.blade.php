@@ -15,7 +15,7 @@
 
     <form action="/player" method="POST" enctype="multipart/form-data" >
     @csrf 
-    <img src="{{asset('storage/noimage.jpeg')}}" alt="画像プレビュー" id="preview" class="rounded-circle border border-light" style="aspect-ratio: 1/1" height="200">
+    <img src="{{ asset('storage/noimage.jpeg')}}" alt="画像プレビュー" id="preview" class="rounded-circle border border-light" style="aspect-ratio: 1/1" height="200">
     
     <!-- <img src="storage/profiles/icon.png" id="img" width="100" height="100"> -->
     

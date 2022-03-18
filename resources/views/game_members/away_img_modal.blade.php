@@ -8,7 +8,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-      <img src="{{asset('storage/profiles/'.$player->photo)}}" class="img-fluid">
+      <img src="{{ asset('storage/profiles/'.$player->photo)}}" class="img-fluid">
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
