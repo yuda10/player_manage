@@ -14,15 +14,13 @@
     @endif
 
     <form action="/player" method="POST" enctype="multipart/form-data" >
-
-  @csrf
-    
-    <img src="storage/銀行強盗のアイコン素材.jpeg" id="img" width="100" height="100">
+    @csrf 
+    <img src="{{asset('storage/noimage.jpeg')}}" alt="画像プレビュー" id="preview" class="rounded-circle border border-light" style="aspect-ratio: 1/1" height="200">
     
     <!-- <img src="storage/profiles/icon.png" id="img" width="100" height="100"> -->
     
     <ion-icon name="person-outline"></ion-icon>
-    <input type="file" name="example" accept="image/jpeg, image/png" style="padding-bottom: 30px;">
+    <input type="file" name="example" accept="image/jpeg, image/png" onchange="previewFile()">
 
     @if(isset($team_id))
     <input type="hidden" name="team_id" value="{{$team_id}}"><br>
@@ -51,3 +49,21 @@
 <link rel=”stylesheet” href=”/css/admin_custom.css”>
 @stop
 
+@section('js')
+<script>
+function previewFile() {
+  const preview = document.getElementById('preview')
+  const file = document.querySelector('input[type=file]').files[0];
+  const reader = new FileReader();
+
+  reader.addEventListener("load", function () {
+    // 画像ファイルを base64 文字列に変換
+    preview.src = reader.result;
+  }, false);
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
+</script>
+@stop

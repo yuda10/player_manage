@@ -16,7 +16,7 @@ class NotificationController extends Controller
     
     public function notificationList(Request $request)
     {
-        $notifications = Notification::whereNotNull('modified_date')->orderBy('modified_date', 'asc')->get();
+        $notifications = Notification::whereNotNull('body')->orderBy('modified_date', 'asc')->get();
 
         return view('home.index', compact('notifications'));
 

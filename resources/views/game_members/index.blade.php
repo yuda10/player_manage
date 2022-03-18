@@ -56,7 +56,7 @@
       });
       // 成功時
       request.done(function(data) {
-        $('#member_img' + i).children('img').attr('src', '/image/profile_img/' + data);
+        $('#member_img' + i).children('img').attr('src', `{{asset('storage/profiles/${data}')}}`);
       });
 
       // 失敗時
@@ -82,7 +82,9 @@
       });
       // 成功時
       request.done(function(data) {
-        $('#member_img' + i).children('img').attr('src', '/image/profile_img/' + data);
+        console.log(data)
+        $('#member_img' + i).children('img').attr('src', `{{asset('storage/profiles/${data}')}}`);
+        // $('#member_img' + i).children('img').attr('src',data);
       });
 
       // 失敗時

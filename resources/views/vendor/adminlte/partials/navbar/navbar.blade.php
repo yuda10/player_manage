@@ -19,9 +19,11 @@
         {{-- Custom right links --}}
         @yield('content_top_nav_right')
 
+    @if(!Auth::user())
         {{-- Configured right links --}}
         @each('adminlte::partials.navbar.menu-item', $adminlte->menu('navbar-right'), 'item')
-
+    @endif
+    
         {{-- User menu link --}}
         @if(Auth::user())
             @if(config('adminlte.usermenu_enabled'))

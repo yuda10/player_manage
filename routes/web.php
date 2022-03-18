@@ -23,10 +23,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('user.welcome');
-});
-
 Route::get('/login', function () {
     return view('auth.login');
 });
@@ -55,10 +51,6 @@ Route::post('/system_admin/user_edit',[UserController::class,'userEdit'])->name(
 
 Route::post('/system_admin/notification', [UserController::class, 'notificationEdit'])->name('notive');
 
-Route::get('/dashboard', function () {
-    return view('user.dashboard');
-})->middleware(['auth:users'])->name('dashboard');
-
 require __DIR__.'/auth.php';
 
 Route::get('/players', function () {
@@ -70,47 +62,13 @@ Route::get('/', [NotificationController::class, 'notificationList']);
 Route::get('/teams', [ TeamsController::class, 'index' ] ) ;
 Route::get('/teamcreate', [ TeamsController::class, 'create' ] )->name('teamcreate');
 Route::post('/teams', [ TeamsController::class, 'store'] );
-
 Route::get('/players/{team}', [ PlayersController::class, 'index' ] ) ;
 Route::post('/player', [ CreateController::class, 'store'] )->name('player');
 Route::get('/create', [ CreateController::class, 'index' ] );
 Route::get('/edit/{id}', [ CreateController::class, 'edit' ] )->name('player');;
 Route::post('/edit/{id}', [ CreateController::class, 'update'] )->name('player');
 Route::get('/edit/profile_delete/{id}', [ CreateController::class, 'profile_delete'] )->name('player');
-// Route::get('/foo', [ CreateController::class, 'notice']);
 
-// Route::get('/teams/', [ TeamsController::class, 'index' ] ) ;
-
-Route::get('/home2', function() {
-    return view('home');
-});
-
-Route::get('/home', [ HomeController::class, 'index'])->name('home');
-
-Route::get('/test', function () {
-    return view('games.test');
-});
-
-
-// // 全ユーザ
-// Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
-// // ユーザ一覧
-// Route::get('/account', 'AccountController@index')->name('account.index');
-// });
-// // 管理者以上
-// Route::group(['middleware' => ['auth', 'can:admin-higher']], function () {
-// // ユーザ登録
-// Route::get('/account/regist', 'AccountController@regist')->name('account.regist');
-// Route::post('/account/regist', 'AccountController@createData')->name('account.regist');
-// // ユーザ編集
-// Route::get('/account/edit/{user_id}', 'AccountController@edit')->name('account.edit');
-// Route::post('/account/edit/{user_id}', 'AccountController@updateData')->name('account.edit');
-// // ユーザ削除
-// Route::post('/account/delete/{user_id}', 'AccountController@deleteData');
-// });
-// // システム管理者のみ
-// Route::group(['middleware' => ['auth', 'can:system-only']], function () {
-// });
 Auth::routes();
 
 

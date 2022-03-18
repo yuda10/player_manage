@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\Team;
+use Intervention\Image\Facades\Image;
 
 class CreateController extends Controller
 {
@@ -107,9 +108,9 @@ class CreateController extends Controller
         //DBに保存
         $player->save();
         // dd($request);
-
+     
         $profileImage = $request->file('example');
-        // dd($profileImage);
+
         if ($profileImage != null) {
             $image_path = $this->saveProfileImage($profileImage, $player->id); // return file name
             $player->photo=$image_path;
@@ -117,15 +118,16 @@ class CreateController extends Controller
             $player->save();
         }
 
-        //処理が終わったらmember/indexにリダイレクト
-        return redirect('players/'.$player->team_id);
-    }
-
-    public function profile_delete($id){
-        $player=Player::find($id);
+        
+        if(!$request->img_name){
+            $player=Player::find($id);
         $player->photo=null;
         $player->save();
-        return view('edit', compact('player'));
+        }
+
+
+        //処理が終わったらmember/indexにリダイレクト
+        return redirect('players/'.$player->team_id);
     }
 
 }

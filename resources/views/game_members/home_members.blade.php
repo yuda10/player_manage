@@ -16,7 +16,7 @@
             @for($i = 1; $i < 16; $i++) <label>No.{{$i}}</label>
               <div class="row d-flex align-items-center">
                 <div class="col-md-2" id="member_img{{$i}}">
-                  <img src="/image/profile_img/noimage.jpeg" class="rounded-circle img-fluid border border-light"
+                  <img src="{{asset('storage/noimage.jpeg')}}" class="rounded-circle img-fluid border border-light"
                     style="aspect-ratio: 1/1" alt="写真">
                 </div>
                 <div class="col-md-10">
@@ -51,7 +51,7 @@
             @for($i = 16; $i < 24; $i++) <label>No.{{$i}}</label>
               <div class="row d-flex align-items-center">
                 <div class="col-md-2" id="member_img{{$i}}">
-                  <img src="/image/profile_img/noimage.jpeg" class="rounded-circle img-fluid border border-light"
+                  <img src="{{asset('storage/noimage.jpeg')}}" class="rounded-circle img-fluid border border-light"
                     style="aspect-ratio: 1/1" alt="写真">
                 </div>
                 <div class="col-md-10">

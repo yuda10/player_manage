@@ -14,6 +14,6 @@ class PlayerSeeder extends Seeder
      */
     public function run()
     {
-        Player::factory()->count(150)->create();  //この行を追加
+        Player::factory()->count(200)->create();  //この行を追加
     }
 }

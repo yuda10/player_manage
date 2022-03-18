@@ -17,8 +17,9 @@ class CreatePlayersTable extends Migration
             $table->id();
             $table->string('name', 20);
             $table->string('phone', 20);
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('position', 20);
+            $table->date('birthday');
             $table->string('photo')->nullable();
             $table->bigInteger('team_id')->unsigned()->index();
             $table->timestamps();

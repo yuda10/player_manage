@@ -16,7 +16,7 @@
             @for($i = 1; $i < 16; $i++) <label>No.{{$i}}</label>
               <div class="row d-flex align-items-center">
                 <div class="col-md-2" id="member_img{{$i}}">
-                  <img src="/image/profile_img/noimage.jpeg" class="rounded-circle img-fluid border border-light"
+                  <img src="{{asset('storage/noimage.jpeg')}}" class="rounded-circle img-fluid border border-light"
                     style="aspect-ratio: 1/1" alt="写真">
                 </div>
                 <div class="col-md-10">
@@ -25,7 +25,6 @@
                   data-select2-id="1" tabindex="-1" aria-hidden="true" id="member_select{{$i}}" name="away_{{$i}}">
 
                     <option selected disabled hidden style='display: none' value=''></option>
-<<<<<<< HEAD
                     @if(!$game_members->isEmpty())
                       @foreach($away_players as $player)
                       @if ($game_members[0]["away_" . $i] == $player->id)
@@ -39,15 +38,6 @@
                       <option value="{{$player->id}}">{{$player -> name}}</option>
                       @endforeach
                     @endif
-=======
-                    @foreach($away_players as $player)
-                    @if ($game_members[0]["away_" . $i] == $player->id)
-                    <option value="{{$player->id}}" selected>{{$player -> name}}</option>
-                    @else
-                    <option value="{{$player->id}}">{{$player -> name}}</option>
-                    @endif
-                    @endforeach
->>>>>>> ho-chi-upstream/main
                   </select>
                 </div>
               </div>
@@ -61,7 +51,7 @@
             @for($i = 16; $i < 24; $i++) <label>No.{{$i}}</label>
               <div class="row d-flex align-items-center">
                 <div class="col-md-2" id="member_img{{$i}}">
-                  <img src="/image/profile_img/noimage.jpeg" class="rounded-circle img-fluid border border-light"
+                  <img src="{{asset('storage/noimage.jpeg')}}" class="rounded-circle img-fluid border border-light"
                     style="aspect-ratio: 1/1" alt="写真">
                 </div>
                 <div class="col-md-10">

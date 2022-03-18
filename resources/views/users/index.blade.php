@@ -86,7 +86,7 @@ $(function() {
 		$(dt).daterangepicker({
 			showDropdowns: true,
 			singleDatePicker: true,
-      autoUpdateInput: false,
+      autoUpdateInput: true,
 			locale: {
 				format: 'Y-MM-DD'
 			},

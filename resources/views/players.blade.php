@@ -31,7 +31,7 @@
       @foreach($players as $player)
       <tr>
         <td>{{$player->id}}</td>  
-        <td><img src="{{ asset($player->photo?'storage/app/public/profiles/'.$player->photo:'storage/no_photo.jpeg') }}" id="img" width="40" height="40" style="border-radius:50%" ></td>
+        <td><img src="{{ asset($player->photo ? 'storage/profiles/'.$player->photo : 'storage/noimage.jpeg') }}" id="img" width="40" height="40" style="border-radius:50%" ></td>
         <td>{{$player->position}}</td>     
         <td>{{$player->name}}</td>
         <td>{{$player->birthday}}</td>

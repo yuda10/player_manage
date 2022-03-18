@@ -188,7 +188,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -231,12 +231,12 @@ return [
         //     'text'         => 'search',
         //     'topnav_right' => true,
         // ],
-        // [
-        //     'text'         => 'ログアウト',
-        //     'logout_url'       => 'logout',
-        //     'classes'   => 'text-bold text-center ',
-        //     'topnav_right' => true,
-        // ],
+        [
+            'text'         => 'ログイン',
+            'url'       => 'login',
+            'classes'   => 'text-bold text-center ',
+            'topnav_right' => true,
+        ],
         // [
         //     'type'         => 'fullscreen-widget',
         //     'topnav_right' => true,
@@ -262,7 +262,7 @@ return [
         // ['header' => 'account_settings'],
         [
             'text' => 'home',
-            'url'  => 'notice',//ホームのリンク先
+            'url'  => '/',
             'icon' => 'fas fa-fw fa-user',
         ],
         [

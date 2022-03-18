@@ -21,13 +21,13 @@
                 @if($game_members[0]["home_" . $i])
                     @foreach($home_players as $player)
                     @if($game_members[0]["home_" . $i] == $player->id)
-                    <img src="/image/profile_img/{{$player->photo}}" class="rounded-circle img-fluid border border-light" style="aspect-ratio: 1/1" alt="写真">
+                    <img src="{{asset('storage/profiles/'.$player->photo)}}" class="rounded-circle img-fluid border border-light" style="aspect-ratio: 1/1" alt="写真">
                     <!-- ホームメンバーのプロフィール写真モーダル -->
                     @include('game_members.home_img_modal')
                     @endif
                     @endforeach
                   @else
-                  <img src="/image/profile_img/noimage.jpeg" class="rounded-circle img-fluid border border-light" style="aspect-ratio: 1/1" alt="写真">
+                  <img src="{{asset('storage/noimage.jpeg')}}" class="rounded-circle img-fluid border border-light" style="aspect-ratio: 1/1" alt="写真">
                   @endif
                   
                 </div>
@@ -59,13 +59,13 @@
                   @if($game_members[0]["away_" . $i])
                     @foreach($away_players as $player)
                     @if($game_members[0]["away_" . $i] == $player->id)
-                    <img src="/image/profile_img/{{$player->photo}}" class="rounded-circle img-fluid border border-light" style="aspect-ratio: 1/1" alt="写真">
+                    <img src="{{asset('storage/profiles/'.$player->photo)}}" class="rounded-circle img-fluid border border-light" style="aspect-ratio: 1/1" alt="写真">
                     <!-- アウェイメンバーのプロフィール写真モーダル -->
                     @include('game_members.away_img_modal')
                     @endif
                     @endforeach
                   @else
-                  <img src="/image/profile_img/noimage.jpeg" class="rounded-circle img-fluid border border-light" style="aspect-ratio: 1/1" alt="写真">
+                  <img src="{{asset('storage/noimage.jpeg')}}" class="rounded-circle img-fluid border border-light" style="aspect-ratio: 1/1" alt="写真">
                   @endif
                   
                 </div>
