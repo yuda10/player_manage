@@ -20,7 +20,7 @@ class CreateController extends Controller
         
         // dd($team_id);
 
-        return view('create', compact('team_id','team_name'));
+        return view('players.create', compact('team_id','team_name'));
     }
     
     /**
@@ -82,7 +82,7 @@ class CreateController extends Controller
     {
         $player=Player::find($id);
         // dd($player);
-        return view('edit', compact('player'));
+        return view('players.edit', compact('player'));
     }
 
     /**

@@ -26,7 +26,7 @@ class PlayersController extends Controller
         // $player=Player::find(1);
         // var_dump($player->team);
 
-        $view = view('players',[ 'players' => $players,'team'=>$team ] );
+        $view = view('players.index',[ 'players' => $players,'team'=>$team ] );
 
         return $view;
     }

@@ -53,20 +53,24 @@ Route::post('/system_admin/notification', [UserController::class, 'notificationE
 
 require __DIR__.'/auth.php';
 
-Route::get('/players', function () {
-    return view('players');
-});
-
 Route::get('/', [NotificationController::class, 'notificationList']);
 
 Route::get('/teams', [ TeamsController::class, 'index' ] ) ;
+
 Route::get('/teamcreate', [ TeamsController::class, 'create' ] )->name('teamcreate');
+
 Route::post('/teams', [ TeamsController::class, 'store'] );
+
 Route::get('/players/{team}', [ PlayersController::class, 'index' ] ) ;
+
 Route::post('/player', [ CreateController::class, 'store'] )->name('player');
+
 Route::get('/create', [ CreateController::class, 'index' ] );
+
 Route::get('/edit/{id}', [ CreateController::class, 'edit' ] )->name('player');;
+
 Route::post('/edit/{id}', [ CreateController::class, 'update'] )->name('player');
+
 Route::get('/edit/profile_delete/{id}', [ CreateController::class, 'profile_delete'] )->name('player');
 
 Auth::routes();

@@ -22,7 +22,7 @@
     <!-- ファイル選択ボタン  -->
     <input type="file" name="example" accept="image/jpeg, image/png" id="file_image"><br>
     <input type="hidden" name='team_id' value='{{$player->team_id}}'><br>
-    <input type="text" name='img_name' id="img_name" value='{{$player->photo}}'><br>
+    <input type="hidden" name='img_name' id="img_name" value='{{$player->photo}}'><br>
     <input type="hidden" name='id' value='{{$player->id}}'><br>
 
     <input type="text" class="form-control" name=position value="{{$player->position}}"><br>
