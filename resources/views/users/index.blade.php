@@ -71,7 +71,6 @@
 </div>
 
 </section>
-{{$i = \App\Models\User::count()}}
 @stop 
 
 @section('css')
